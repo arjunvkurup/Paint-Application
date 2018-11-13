@@ -38,14 +38,22 @@
             this.editToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.coloursToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.shapesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rectangleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.circleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.squareToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.brushSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pxToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pxToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
+            this.pxToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
+            this.eraserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.viewToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel1 = new System.Windows.Forms.Panel();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
-            this.brushSizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.backgroundColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.shapeColourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -108,11 +116,13 @@
             this.editToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.coloursToolStripMenuItem,
             this.shapesToolStripMenuItem,
-            this.brushSizeToolStripMenuItem});
+            this.brushSizeToolStripMenuItem,
+            this.eraserToolStripMenuItem,
+            this.backgroundColourToolStripMenuItem,
+            this.shapeColourToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
             this.editToolStripMenuItem.Size = new System.Drawing.Size(52, 20);
             this.editToolStripMenuItem.Text = "Home";
-            this.editToolStripMenuItem.Click += new System.EventHandler(this.editToolStripMenuItem_Click);
             // 
             // coloursToolStripMenuItem
             // 
@@ -123,9 +133,80 @@
             // 
             // shapesToolStripMenuItem
             // 
+            this.shapesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.rectangleToolStripMenuItem,
+            this.circleToolStripMenuItem,
+            this.squareToolStripMenuItem});
             this.shapesToolStripMenuItem.Name = "shapesToolStripMenuItem";
             this.shapesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.shapesToolStripMenuItem.Text = "Shapes";
+            // 
+            // rectangleToolStripMenuItem
+            // 
+            this.rectangleToolStripMenuItem.Name = "rectangleToolStripMenuItem";
+            this.rectangleToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.rectangleToolStripMenuItem.Text = "Rectangle";
+            this.rectangleToolStripMenuItem.Click += new System.EventHandler(this.rectangleToolStripMenuItem_Click);
+            // 
+            // circleToolStripMenuItem
+            // 
+            this.circleToolStripMenuItem.Name = "circleToolStripMenuItem";
+            this.circleToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.circleToolStripMenuItem.Text = "Circle";
+            this.circleToolStripMenuItem.Click += new System.EventHandler(this.circleToolStripMenuItem_Click);
+            // 
+            // squareToolStripMenuItem
+            // 
+            this.squareToolStripMenuItem.Name = "squareToolStripMenuItem";
+            this.squareToolStripMenuItem.Size = new System.Drawing.Size(126, 22);
+            this.squareToolStripMenuItem.Text = "Square";
+            this.squareToolStripMenuItem.Click += new System.EventHandler(this.squareToolStripMenuItem_Click);
+            // 
+            // brushSizeToolStripMenuItem
+            // 
+            this.brushSizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pxToolStripMenuItem,
+            this.pxToolStripMenuItem1,
+            this.pxToolStripMenuItem2,
+            this.pxToolStripMenuItem3});
+            this.brushSizeToolStripMenuItem.Name = "brushSizeToolStripMenuItem";
+            this.brushSizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.brushSizeToolStripMenuItem.Text = "Brush Size";
+            // 
+            // pxToolStripMenuItem
+            // 
+            this.pxToolStripMenuItem.Name = "pxToolStripMenuItem";
+            this.pxToolStripMenuItem.Size = new System.Drawing.Size(95, 22);
+            this.pxToolStripMenuItem.Text = "1 px";
+            this.pxToolStripMenuItem.Click += new System.EventHandler(this.pxToolStripMenuItem_Click);
+            // 
+            // pxToolStripMenuItem1
+            // 
+            this.pxToolStripMenuItem1.Name = "pxToolStripMenuItem1";
+            this.pxToolStripMenuItem1.Size = new System.Drawing.Size(95, 22);
+            this.pxToolStripMenuItem1.Text = "2 px";
+            this.pxToolStripMenuItem1.Click += new System.EventHandler(this.pxToolStripMenuItem1_Click);
+            // 
+            // pxToolStripMenuItem2
+            // 
+            this.pxToolStripMenuItem2.Name = "pxToolStripMenuItem2";
+            this.pxToolStripMenuItem2.Size = new System.Drawing.Size(95, 22);
+            this.pxToolStripMenuItem2.Text = "3 px";
+            this.pxToolStripMenuItem2.Click += new System.EventHandler(this.pxToolStripMenuItem2_Click);
+            // 
+            // pxToolStripMenuItem3
+            // 
+            this.pxToolStripMenuItem3.Name = "pxToolStripMenuItem3";
+            this.pxToolStripMenuItem3.Size = new System.Drawing.Size(95, 22);
+            this.pxToolStripMenuItem3.Text = "5 px";
+            this.pxToolStripMenuItem3.Click += new System.EventHandler(this.pxToolStripMenuItem3_Click);
+            // 
+            // eraserToolStripMenuItem
+            // 
+            this.eraserToolStripMenuItem.Name = "eraserToolStripMenuItem";
+            this.eraserToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.eraserToolStripMenuItem.Text = "Eraser";
+            this.eraserToolStripMenuItem.Click += new System.EventHandler(this.eraserToolStripMenuItem_Click);
             // 
             // viewToolStripMenuItem
             // 
@@ -137,7 +218,6 @@
             // 
             this.panel1.AutoSize = true;
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.panel2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 24);
             this.panel1.Name = "panel1";
@@ -147,19 +227,19 @@
             this.panel1.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseMove);
             this.panel1.MouseUp += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseUp);
             // 
-            // brushSizeToolStripMenuItem
+            // backgroundColourToolStripMenuItem
             // 
-            this.brushSizeToolStripMenuItem.Name = "brushSizeToolStripMenuItem";
-            this.brushSizeToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.brushSizeToolStripMenuItem.Text = "Brush Size";
+            this.backgroundColourToolStripMenuItem.Name = "backgroundColourToolStripMenuItem";
+            this.backgroundColourToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.backgroundColourToolStripMenuItem.Text = "Background Colour";
+            this.backgroundColourToolStripMenuItem.Click += new System.EventHandler(this.backgroundColourToolStripMenuItem_Click);
             // 
-            // panel2
+            // shapeColourToolStripMenuItem
             // 
-            this.panel2.BackColor = System.Drawing.Color.LightGray;
-            this.panel2.Location = new System.Drawing.Point(3, 3);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(893, 94);
-            this.panel2.TabIndex = 0;
+            this.shapeColourToolStripMenuItem.Name = "shapeColourToolStripMenuItem";
+            this.shapeColourToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.shapeColourToolStripMenuItem.Text = "Shape Colour";
+            this.shapeColourToolStripMenuItem.Click += new System.EventHandler(this.shapeColourToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -174,7 +254,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -197,7 +276,16 @@
         private System.Windows.Forms.ToolStripMenuItem shapesToolStripMenuItem;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
         private System.Windows.Forms.ToolStripMenuItem brushSizeToolStripMenuItem;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.ToolStripMenuItem pxToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pxToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem pxToolStripMenuItem2;
+        private System.Windows.Forms.ToolStripMenuItem pxToolStripMenuItem3;
+        private System.Windows.Forms.ToolStripMenuItem rectangleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem circleToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem squareToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem eraserToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem backgroundColourToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem shapeColourToolStripMenuItem;
     }
 }
 
