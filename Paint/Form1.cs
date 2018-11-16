@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
-
+using System.Drawing.Imaging;
 
 namespace Paint
 {
@@ -19,6 +19,13 @@ namespace Paint
         int y = -1;
         bool moving = false;
         Pen pen;
+        Bitmap bmp;
+        Rectangle rec;
+        bool rect = false;
+        bool sq = false;
+        bool circ = false;
+        int ab, ac;
+        int trig = 0;
 
         public Form1()
         {
@@ -29,6 +36,7 @@ namespace Paint
             pen.StartCap = pen.EndCap = System.Drawing.Drawing2D.LineCap.Round;
             Font myfont = new Font("Helvetica", 40, FontStyle.Regular);
             Brush mybrush = new SolidBrush(Color.Black);
+            bmp = new Bitmap(panel1.ClientSize.Width, panel1.ClientSize.Height);
         }
 
         private void panel1_MouseDown(object sender, MouseEventArgs e)
@@ -75,9 +83,13 @@ namespace Paint
         private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SaveFileDialog dialogue = new SaveFileDialog();
-            if(dialogue.ShowDialog() == DialogResult.OK)
+            dialogue.Title = "New Image";
+            dialogue.DefaultExt = "jpeg";
+            dialogue.Filter = "JPEG files (*.jpeg)|*.jpeg|All files (*.*)|*.*";
+            dialogue.FilterIndex = 2;
+            if (dialogue.ShowDialog() == DialogResult.OK)
             {
-               // int width = Convert.ToInt32(drawImage.width);
+                bmp.Save(dialogue.FileName, ImageFormat.Jpeg);
 
             }
         }
@@ -110,45 +122,97 @@ namespace Paint
         {
             Rectangle rec = new Rectangle(20, 20, 250, 200);
             g.DrawRectangle(pen, rec);
+            rect = true;
+            trig = 1;
         }
 
         private void circleToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            int x, y;
-            int enx, eny;
-            x = Location.X;
-            y = Location.Y;
-            Rectangle rec = new Rectangle(x, y, 250, 250);
+            
+            ab = Location.X;
+            ac = Location.Y;
+            Rectangle rec = new Rectangle(ab, ac, 250, 250);
+            circ = true;
+            trig = 2;
             g.DrawEllipse(pen, rec);
         }
 
         private void squareToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Rectangle rec = new Rectangle(20, 20, 250, 250);
+            rec = new Rectangle(20, 20, 250, 250);
+            sq = true;
+            trig = 3;
             g.DrawRectangle(pen, rec);
         }
 
         private void eraserToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Invalidate();
+            panel1.Invalidate();
         }
 
         private void backgroundColourToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog c = new ColorDialog();
-            if(c.ShowDialog() == DialogResult.OK)
-            {
-                panel1.BackColor = c.Color;
-                backgroundColourToolStripMenuItem.BackColor = c.Color;
-            }
+            c.ShowDialog();
+            panel1.BackColor = c.Color;
         }
 
         private void shapeColourToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog c = new ColorDialog();
-            if (c.ShowDialog() == DialogResult.OK)
+            c.ShowDialog();
+            if (rect && trig == 1)
             {
-                //e.Graphics.Fill
+                SolidBrush sb = new SolidBrush(c.Color);
+                g.FillRectangle(sb, 20, 20, 250, 200);
+            }
+            else if(sq && trig == 3)
+            {
+                SolidBrush sb = new SolidBrush(c.Color);
+                g.FillRectangle(sb, 20, 20, 250, 250);
+            }
+            else if(circ && trig == 2)
+            {
+                SolidBrush sb = new SolidBrush(c.Color);
+                g.FillEllipse(sb, ab, ac, 250, 200);
+            }
+        }
+
+        private void viewToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form2 a = new Form2();
+            a.ShowDialog();
+
+        }
+
+        private void newToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            g.Clear(panel1.BackColor);
+            panel1.BackColor = Color.White;
+            
+        }
+
+        private void openToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog openFileDialog1 = new OpenFileDialog();
+            {
+                openFileDialog1.Title = "Browse Image Files";
+                openFileDialog1.DefaultExt = "jpeg";
+                openFileDialog1.Filter = "jpeg files (*.jpeg)|*.jpeg";
+                openFileDialog1.FilterIndex = 2;
+            }
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                string sFileName = openFileDialog1.FileName;
+                bmp = new Bitmap(sFileName);
+            }
+        }
+
+        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Do you want to Exit?", "Exit", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+            {
+                Application.Exit();
             }
         }
     }
